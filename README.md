@@ -1,4 +1,4 @@
-# 🏆 CostIQ — AI for Enterprise Cost Intelligence & Autonomous Action
+# CostIQ — AI for Enterprise Cost Intelligence & Autonomous Action
 
 > *"Every enterprise leaks money. CostIQ is the first autonomous system that doesn't just find those leaks — it plugs them."*
 
@@ -9,7 +9,7 @@
 
 ---
 
-## 🎯 What is CostIQ?
+## What is CostIQ?
 
 CostIQ is an **autonomous AI cost intelligence platform** with 4 specialized agents that continuously monitor procurement, SLAs, resource utilization, and financial operations — then **take corrective action** with board-ready math on every dollar saved.
 
@@ -17,25 +17,25 @@ CostIQ is an **autonomous AI cost intelligence platform** with 4 specialized age
 
 | Agent | Mission | Example Finding |
 |-------|---------|-----------------|
-| 💰 **Spend Intelligence** | Duplicate invoices, rate creep, vendor overcharges | "Acme invoiced $55,860/mo vs contracted $42,000 for 18 months — **$249K overcharge**" |
-| ⚡ **SLA Prevention** | Predict SLA breaches before they happen | "73% breach probability, $182K exposure. Reroute 200 tickets for $800 → **170× ROI**" |
-| ☁️ **Resource Optimization** | Cloud rightsizing, SaaS license waste | "23 EC2 instances at <30% CPU — **$87K/year waste**" |
-| 📊 **Financial Operations** | Variance analysis, reconciliation | "Marketing budget +15.5% variance, volume-driven — **$340K correctable**" |
+| **Spend Intelligence** | Duplicate invoices, rate creep, vendor overcharges | "Acme invoiced $55,860/mo vs contracted $42,000 for 18 months — **$249K overcharge**" |
+| **SLA Prevention** | Predict SLA breaches before they happen | "73% breach probability, $182K exposure. Reroute 200 tickets for $800 → **170× ROI**" |
+| **Resource Optimization** | Cloud rightsizing, SaaS license waste | "23 EC2 instances at <30% CPU — **$87K/year waste**" |
+| **Financial Operations** | Variance analysis, reconciliation | "Marketing budget +15.5% variance, volume-driven — **$340K correctable**" |
 
 ### The Differentiator: Financial Impact Statements (FIS)
 
 Every finding produces a **Financial Impact Statement** with:
-- ✅ Baseline cost (documented)
-- ✅ Projected savings with **explicit formula**
-- ✅ Confidence score (0-1)
-- ✅ Complete audit trail
-- ✅ Intervention ROI
+- [x] Baseline cost (documented)
+- [x] Projected savings with **explicit formula**
+- [x] Confidence score (0-1)
+- [x] Complete audit trail
+- [x] Intervention ROI
 
 *No savings number without a formula. That's how you pass the CFO test.*
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -69,7 +69,7 @@ Every finding produces a **Financial Impact Statement** with:
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.10+
@@ -100,13 +100,13 @@ npm run dev
 ### 4. Open & Demo
 1. Visit **http://localhost:3000** → Landing page
 2. Click **"See It In Action"** → Dashboard
-3. Click **"🚀 Run Analysis"** → Watch 4 agents find cost savings
+3. Click **"Run Analysis"** → Watch 4 agents find cost savings
 4. Go to **Approvals** → Walk through the 3-step approval flow
 5. Check **Impact Board** → See total savings with formulas
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 costiq/
@@ -135,7 +135,7 @@ costiq/
 
 ---
 
-## 🧮 The Math
+## The Math
 
 ### Spend Agent — Rate Creep Detection
 ```
@@ -162,7 +162,7 @@ waste = Σ(instance_cost × waste_factor)
 
 ---
 
-## 🎨 Design
+## Design
 
 - **Dark luxury theme** with dusty rose accent (#e4a4bd)
 - **Glassmorphism** navigation and cards
@@ -173,7 +173,7 @@ waste = Σ(instance_cost × waste_factor)
 
 ---
 
-## 📊 Evaluation Criteria
+## Evaluation Criteria
 
 | Focus | How CostIQ Addresses It |
 |-------|------------------------|
@@ -184,10 +184,10 @@ waste = Σ(instance_cost × waste_factor)
 
 ---
 
-## 👥 Team
+## Team
 
-Built with ❤️ for the hackathon.
+Built for the hackathon.
 
 ---
 
-*Built for hackathon. Designed for production. Ship it.* 🚀
+*Built for hackathon. Designed for production. Ship it.*

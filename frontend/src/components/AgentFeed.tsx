@@ -1,6 +1,7 @@
 'use client';
 
 import { AgentActivity } from '@/lib/api';
+import { Zap, CheckCircle, XCircle, RefreshCw, Pin, Bot } from 'lucide-react';
 
 const agentColors: Record<string, string> = {
   spend: 'var(--agent-spend)',
@@ -10,18 +11,18 @@ const agentColors: Record<string, string> = {
   supervisor: 'var(--accent)',
 };
 
-const statusIcons: Record<string, string> = {
-  running: '⚡',
-  completed: '✅',
-  error: '❌',
-  executing: '🔄',
+const statusIcons: Record<string, React.ReactNode> = {
+  running: <Zap size={12} />,
+  completed: <CheckCircle size={12} />,
+  error: <XCircle size={12} />,
+  executing: <RefreshCw size={12} />,
 };
 
 export default function AgentFeed({ activity }: { activity: AgentActivity[] }) {
   if (activity.length === 0) {
     return (
       <div style={{ textAlign: 'center', padding: '40px 0' }}>
-        <div style={{ fontSize: '40px', marginBottom: '12px' }}>🤖</div>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '12px', color: 'var(--text-muted)' }}><Bot size={40} /></div>
         <p className="body-sm">No agent activity yet.</p>
         <p className="label" style={{ marginTop: '8px' }}>
           Trigger an analysis to see agents in action
@@ -34,7 +35,7 @@ export default function AgentFeed({ activity }: { activity: AgentActivity[] }) {
     <div>
       {activity.map((item, i) => {
         const color = agentColors[item.agent] || 'var(--text-muted)';
-        const icon = statusIcons[item.status] || '📌';
+        const icon = statusIcons[item.status] || <Pin size={12} />;
 
         return (
           <div

@@ -3,12 +3,13 @@
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import { api, Stats, Finding } from '@/lib/api';
+import { Coins, Zap, Cloud, BarChart2, Calculator } from 'lucide-react';
 
-const agentMeta: Record<string, { label: string; icon: string; color: string }> = {
-  spend: { label: 'Spend Intelligence', icon: '💰', color: 'var(--agent-spend)' },
-  sla: { label: 'SLA Prevention', icon: '⚡', color: 'var(--agent-sla)' },
-  resource: { label: 'Resource Optimization', icon: '☁️', color: 'var(--agent-resource)' },
-  finops: { label: 'Financial Operations', icon: '📊', color: 'var(--agent-finops)' },
+const agentMeta: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
+  spend: { label: 'Spend Intelligence', icon: <Coins size={28} />, color: 'var(--agent-spend)' },
+  sla: { label: 'SLA Prevention', icon: <Zap size={28} />, color: 'var(--agent-sla)' },
+  resource: { label: 'Resource Optimization', icon: <Cloud size={28} />, color: 'var(--agent-resource)' },
+  finops: { label: 'Financial Operations', icon: <BarChart2 size={28} />, color: 'var(--agent-finops)' },
 };
 
 export default function ImpactPage() {
@@ -81,13 +82,13 @@ export default function ImpactPage() {
               </span>
               <div className="grid-3" style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
                 {Object.entries(stats.by_agent).map(([agent, data]) => {
-                  const meta = agentMeta[agent] || { label: agent, icon: '?', color: 'var(--accent)' };
+                  const meta = agentMeta[agent] || { label: agent, icon: <div />, color: 'var(--accent)' };
                   const pct = stats.total_identified > 0
                     ? ((data.savings / stats.total_identified) * 100).toFixed(0)
                     : '0';
                   return (
                     <div key={agent} className="card">
-                      <div style={{ fontSize: '28px', marginBottom: '8px' }}>{meta.icon}</div>
+                      <div style={{ marginBottom: '8px', color: meta.color }}>{meta.icon}</div>
                       <div className="label" style={{ marginBottom: '4px' }}>{meta.label}</div>
                       <div style={{ fontSize: '28px', fontWeight: 900, color: meta.color }}>
                         {formatDollar(data.savings)}
@@ -110,8 +111,8 @@ export default function ImpactPage() {
 
             {/* Individual FIS Details */}
             <div className="reveal-up" style={{ animationDelay: '0.3s' }}>
-              <span className="label-accent" style={{ marginBottom: '20px', display: 'block' }}>
-                📐 Financial Impact Statements
+              <span className="label-accent" style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Calculator size={14} /> Financial Impact Statements
               </span>
               {findings.slice(0, 10).map((finding, i) => {
                 const meta = agentMeta[finding.agent_type] || { color: 'var(--accent)' };
@@ -143,7 +144,9 @@ export default function ImpactPage() {
           </>
         ) : (
           <div className="card" style={{ textAlign: 'center', padding: '80px' }}>
-            <div style={{ fontSize: '48px', marginBottom: '16px' }}>📊</div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px', color: 'var(--text-muted)' }}>
+              <BarChart2 size={48} />
+            </div>
             <h3 className="heading-3" style={{ marginBottom: '12px' }}>No data yet</h3>
             <p className="body-sm">Run an analysis from the Dashboard to see your impact board.</p>
           </div>

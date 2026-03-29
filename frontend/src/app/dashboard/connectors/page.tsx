@@ -3,12 +3,13 @@
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import { api } from '@/lib/api';
+import { Building, Cloud, Hexagon, ClipboardList, BarChart2, FileText, Radio } from 'lucide-react';
 
 interface Connector {
   id: string;
   name: string;
   type: string;
-  icon: string;
+  icon: React.ReactNode;
   status: string;
   description: string;
 }
@@ -25,12 +26,12 @@ export default function ConnectorsPage() {
       } catch {
         // Default connectors when API is not available
         setConnectors([
-          { id: 'sap', name: 'SAP ERP', type: 'erp', icon: '🏢', status: 'available', description: 'Procurement, finance, and HR data' },
-          { id: 'salesforce', name: 'Salesforce', type: 'crm', icon: '☁️', status: 'available', description: 'Customer and revenue data' },
-          { id: 'aws', name: 'AWS Cost Explorer', type: 'cloud', icon: '🔶', status: 'available', description: 'Cloud infrastructure costs and usage' },
-          { id: 'jira', name: 'JIRA', type: 'project', icon: '📋', status: 'available', description: 'Project tracking and SLA metrics' },
-          { id: 'quickbooks', name: 'QuickBooks', type: 'finance', icon: '📊', status: 'available', description: 'Financial transactions and reporting' },
-          { id: 'csv', name: 'CSV Upload', type: 'file', icon: '📄', status: 'available', description: 'Universal data import via CSV' },
+          { id: 'sap', name: 'SAP ERP', type: 'erp', icon: <Building size={36} />, status: 'available', description: 'Procurement, finance, and HR data' },
+          { id: 'salesforce', name: 'Salesforce', type: 'crm', icon: <Cloud size={36} />, status: 'available', description: 'Customer and revenue data' },
+          { id: 'aws', name: 'AWS Cost Explorer', type: 'cloud', icon: <Hexagon size={36} />, status: 'available', description: 'Cloud infrastructure costs and usage' },
+          { id: 'jira', name: 'JIRA', type: 'project', icon: <ClipboardList size={36} />, status: 'available', description: 'Project tracking and SLA metrics' },
+          { id: 'quickbooks', name: 'QuickBooks', type: 'finance', icon: <BarChart2 size={36} />, status: 'available', description: 'Financial transactions and reporting' },
+          { id: 'csv', name: 'CSV Upload', type: 'file', icon: <FileText size={36} />, status: 'available', description: 'Universal data import via CSV' },
         ]);
       }
     };
@@ -124,8 +125,11 @@ export default function ConnectorsPage() {
                   fontSize: '11px',
                   color: 'var(--agent-finops)',
                   fontWeight: 600,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px'
                 }}>
-                  📡 Demo mode — synthetic data with embedded anomalies
+                  <Radio size={14} /> Demo mode — synthetic data with embedded anomalies
                 </div>
               )}
             </div>

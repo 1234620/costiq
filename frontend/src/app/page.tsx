@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
+import { Coins, Zap, Cloud, BarChart2, Lock, Calculator } from 'lucide-react';
 
 export default function LandingPage() {
   return (
@@ -156,37 +157,37 @@ export default function LandingPage() {
         <div className="grid-3" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           {[
             {
-              icon: '💰',
+              icon: <Coins size={36} />,
               title: 'Spend Intelligence',
               color: 'var(--agent-spend)',
               desc: 'Detects duplicate invoices, rate creep, vendor overcharges. Every finding includes exact formulas and contract references.',
             },
             {
-              icon: '⚡',
+              icon: <Zap size={36} />,
               title: 'SLA Prevention',
               color: 'var(--agent-sla)',
               desc: 'Predicts SLA breaches using probabilistic models. Calculates expected loss and intervention ROI before taking action.',
             },
             {
-              icon: '☁️',
+              icon: <Cloud size={36} />,
               title: 'Resource Optimization',
               color: 'var(--agent-resource)',
               desc: 'Identifies overprovisioned cloud instances, unused SaaS licenses, and Reserved Instance savings opportunities.',
             },
             {
-              icon: '📊',
+              icon: <BarChart2 size={36} />,
               title: 'Financial Operations',
               color: 'var(--agent-finops)',
               desc: 'Variance decomposition (volume/rate/mix), transaction reconciliation, and accrual management.',
             },
             {
-              icon: '🔐',
+              icon: <Lock size={36} />,
               title: 'Approval Workflows',
               color: 'var(--accent)',
               desc: '4-tier approval routing: auto → manager → director → C-suite. Every action requires human sign-off above threshold.',
             },
             {
-              icon: '📐',
+              icon: <Calculator size={36} />,
               title: 'The Math',
               color: 'var(--accent)',
               desc: 'Every finding produces a Financial Impact Statement with baseline, formula, confidence score, and full audit trail.',

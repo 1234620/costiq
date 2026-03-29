@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import FindingCard from '@/components/FindingCard';
 import { api, Finding } from '@/lib/api';
+import { Globe, Coins, Zap, Cloud, BarChart2 } from 'lucide-react';
 
 export default function FindingsPage() {
   const [findings, setFindings] = useState<Finding[]>([]);
@@ -28,11 +29,11 @@ export default function FindingsPage() {
     : findings.filter((f) => f.agent_type === filter);
 
   const agentTabs = [
-    { key: 'all', label: 'All', icon: '🌐' },
-    { key: 'spend', label: 'Spend', icon: '💰' },
-    { key: 'sla', label: 'SLA', icon: '⚡' },
-    { key: 'resource', label: 'Resource', icon: '☁️' },
-    { key: 'finops', label: 'FinOps', icon: '📊' },
+    { key: 'all', label: 'All', icon: <Globe size={14} /> },
+    { key: 'spend', label: 'Spend', icon: <Coins size={14} /> },
+    { key: 'sla', label: 'SLA', icon: <Zap size={14} /> },
+    { key: 'resource', label: 'Resource', icon: <Cloud size={14} /> },
+    { key: 'finops', label: 'FinOps', icon: <BarChart2 size={14} /> },
   ];
 
   return (
@@ -56,6 +57,9 @@ export default function FindingsPage() {
               key={tab.key}
               onClick={() => setFilter(tab.key)}
               style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
                 padding: '10px 20px',
                 borderRadius: 'var(--radius-full)',
                 background: filter === tab.key ? 'var(--accent)' : 'var(--bg-secondary)',
@@ -69,7 +73,7 @@ export default function FindingsPage() {
                 transition: 'all 0.3s',
               }}
             >
-              {tab.icon} {tab.label} ({tab.key === 'all' ? findings.length : findings.filter(f => f.agent_type === tab.key).length})
+              {tab.icon} <span>{tab.label} ({tab.key === 'all' ? findings.length : findings.filter(f => f.agent_type === tab.key).length})</span>
             </button>
           ))}
         </div>

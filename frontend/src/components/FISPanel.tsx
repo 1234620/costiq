@@ -1,6 +1,7 @@
 'use client';
 
 import { FIS } from '@/lib/api';
+import { Calculator } from 'lucide-react';
 
 interface FISPanelProps {
   fis: FIS;
@@ -19,8 +20,8 @@ export default function FISPanel({ fis, color = 'var(--accent)' }: FISPanelProps
 
   return (
     <div className="fis-panel">
-      <div className="label-accent" style={{ marginBottom: '16px', color }}>
-        📐 Financial Impact Statement
+      <div className="label-accent" style={{ marginBottom: '16px', color, display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <Calculator size={14} /> Financial Impact Statement
       </div>
 
       {/* Key metrics */}

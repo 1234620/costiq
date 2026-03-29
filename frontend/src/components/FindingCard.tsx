@@ -3,6 +3,7 @@
 import { Finding } from '@/lib/api';
 import { useState } from 'react';
 import FISPanel from './FISPanel';
+import { Coins, Zap, Cloud, BarChart2 } from 'lucide-react';
 
 const agentColors: Record<string, string> = {
   spend: 'var(--agent-spend)',
@@ -11,11 +12,11 @@ const agentColors: Record<string, string> = {
   finops: 'var(--agent-finops)',
 };
 
-const agentLabels: Record<string, string> = {
-  spend: '💰 Spend Intelligence',
-  sla: '⚡ SLA Prevention',
-  resource: '☁️ Resource Optimization',
-  finops: '📊 Financial Operations',
+const agentLabels: Record<string, React.ReactNode> = {
+  spend: <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}><Coins size={14} /> Spend Intelligence</span>,
+  sla: <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}><Zap size={14} /> SLA Prevention</span>,
+  resource: <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}><Cloud size={14} /> Resource Optimization</span>,
+  finops: <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}><BarChart2 size={14} /> Financial Operations</span>,
 };
 
 export default function FindingCard({ finding, index = 0 }: { finding: Finding; index?: number }) {

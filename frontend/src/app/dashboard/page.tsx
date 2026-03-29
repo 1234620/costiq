@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import FindingCard from '@/components/FindingCard';
 import AgentFeed from '@/components/AgentFeed';
 import { api, Finding, AgentActivity, createWebSocket } from '@/lib/api';
+import { Search, CheckCircle, Zap, Lightbulb, Rocket, Bot } from 'lucide-react';
 
 export default function Dashboard() {
   const [findings, setFindings] = useState<Finding[]>([]);
@@ -118,16 +119,16 @@ export default function Dashboard() {
             }}
           >
             {isAnalyzing && <span className="spinner" />}
-            {isAnalyzing ? 'Agents Working...' : '🚀 Run Analysis'}
+            {isAnalyzing ? 'Agents Working...' : <><Rocket size={14} /> Run Analysis</>}
           </button>
         </div>
 
         {/* Savings Counter Cards */}
         <div className="grid-3" style={{ marginBottom: '32px' }}>
           {[
-            { label: 'Savings Identified', value: stats.identified, color: 'var(--accent)', icon: '🔍' },
-            { label: 'Savings Approved', value: stats.approved, color: 'var(--agent-finops)', icon: '✅' },
-            { label: 'Savings Executed', value: stats.executed, color: 'var(--agent-resource)', icon: '⚡' },
+            { label: 'Savings Identified', value: stats.identified, color: 'var(--accent)', icon: <Search size={24} /> },
+            { label: 'Savings Approved', value: stats.approved, color: 'var(--agent-finops)', icon: <CheckCircle size={24} /> },
+            { label: 'Savings Executed', value: stats.executed, color: 'var(--agent-resource)', icon: <Zap size={24} /> },
           ].map((item) => (
             <div key={item.label} className="card">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -146,21 +147,23 @@ export default function Dashboard() {
           {/* Findings Feed */}
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-              <span className="label-accent">
-                💡 Cost Findings ({findings.length})
+              <span className="label-accent" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Lightbulb size={14} /> Cost Findings ({findings.length})
               </span>
             </div>
 
             {findings.length === 0 ? (
               <div className="card" style={{ textAlign: 'center', padding: '60px 40px' }}>
-                <div style={{ fontSize: '48px', marginBottom: '16px' }}>🔎</div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px', color: 'var(--text-muted)' }}>
+                  <Search size={48} />
+                </div>
                 <h3 className="heading-3" style={{ marginBottom: '12px' }}>No findings yet</h3>
                 <p className="body-sm" style={{ maxWidth: '400px', margin: '0 auto 24px' }}>
                   Click &quot;Run Analysis&quot; to unleash all 4 agents on your enterprise data.
                   They&apos;ll find cost leakage with full financial math.
                 </p>
                 <button className="btn-primary" onClick={triggerAnalysis} disabled={isAnalyzing}>
-                  {isAnalyzing ? 'Analyzing...' : '🚀 Run Demo Analysis'}
+                  {isAnalyzing ? 'Analyzing...' : <><Rocket size={14} /> Run Demo Analysis</>}
                 </button>
               </div>
             ) : (
@@ -181,7 +184,9 @@ export default function Dashboard() {
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-              <span className="label-accent">🤖 Live Agent Activity</span>
+              <span className="label-accent" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Bot size={14} /> Live Agent Activity
+              </span>
               {isAnalyzing && <span className="spinner" />}
             </div>
             <AgentFeed activity={activity} />

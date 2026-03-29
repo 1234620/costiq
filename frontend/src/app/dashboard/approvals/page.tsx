@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import FISPanel from '@/components/FISPanel';
 import { api, ApprovalItem, Finding } from '@/lib/api';
+import { CheckCircle, XCircle } from 'lucide-react';
 
 export default function ApprovalsPage() {
   const [approvals, setApprovals] = useState<ApprovalItem[]>([]);
@@ -160,17 +161,17 @@ export default function ApprovalsPage() {
                     className="btn-primary"
                     onClick={() => handleDecision('approve')}
                     disabled={processing}
-                    style={{ flex: 1 }}
+                    style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
                   >
-                    {processing ? 'Executing...' : '✅ Approve & Execute'}
+                    {processing ? 'Executing...' : <><CheckCircle size={16} /> Approve & Execute</>}
                   </button>
                   <button
                     className="btn-secondary"
                     onClick={() => handleDecision('reject')}
                     disabled={processing}
-                    style={{ flex: 1 }}
+                    style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
                   >
-                    ❌ Reject
+                    <XCircle size={16} /> Reject
                   </button>
                 </div>
               </div>
@@ -196,7 +197,9 @@ export default function ApprovalsPage() {
           <div>
             {approvals.length === 0 ? (
               <div className="card" style={{ textAlign: 'center', padding: '60px' }}>
-                <div style={{ fontSize: '48px', marginBottom: '16px' }}>✅</div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px', color: 'var(--agent-finops)' }}>
+                  <CheckCircle size={48} />
+                </div>
                 <h3 className="heading-3" style={{ marginBottom: '12px' }}>No pending approvals</h3>
                 <p className="body-sm">
                   All clear! Run an analysis to generate findings that need approval.
